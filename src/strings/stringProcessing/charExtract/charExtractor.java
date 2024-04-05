@@ -2,8 +2,8 @@ package strings.stringProcessing.charExtract;
 
 public class charExtractor {
     String str; //строка для извлечения символов
-    int indexCh;
-    char ch;
+    int indexCh; //индекс символа строки для извлечения
+    char ch; //извлекаемый символ
 
     charExtractor(String str, int indexCh){
         this.str = str;
