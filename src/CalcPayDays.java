@@ -1,20 +1,33 @@
 import java.util.Calendar;
 import java.util.Date;
 
+
 public class CalcPayDays {
-    int dayOfMonth;
+    int dayOfMonth; //текущий день месяца
+    int daysInTheMonth; //количество дней в месяце
+    final int PAYDAY = 10; //день зарплаты
+    final int ADVANCE_DAY = 25; //день аванса
+    
+    int daysUntilAdvance;
+    int daysUntilPayday;
+    
+    
     //получить текущий день месяца
     void getDayOfTheMonth(){
-        Date date = new Date(2023, 4, 31);
+        //задаем текущую дату
+        Date date = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        dayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
+        
+        //получаем число текущей даты
+        dayOfMonth =    cal.get(Calendar.DAY_OF_MONTH);
         System.out.println(dayOfMonth);
     }
 
     //расчет количества дней до аванса
     void calcDaysUntilAdvance(){
-        System.out.println("До аванса - " + " дней");
+        daysUntilAdvance = ADVANCE_DAY - dayOfMonth;
+        System.out.println("До аванса - " + daysUntilAdvance + " дней");
     }
 
     //расчет количества дней до зарплаты
@@ -29,7 +42,7 @@ public class CalcPayDays {
         } else if((dayOfMonth > 25 && dayOfMonth <= 31)||(dayOfMonth > 0 && dayOfMonth < 10)){
             calcDaysUntilPayday();
         } else if(dayOfMonth == 10){
-            System.out.println("Сегодня день зарплаты УРА!!!");
+            System.out.println("Сегодня день   зарплаты УРА!!!");
         } else if(dayOfMonth == 25){
             System.out.println("Сегодня день аванса УРА!!!");
         }
@@ -40,4 +53,5 @@ public class CalcPayDays {
         calcPD.getDayOfTheMonth();
         calcPD.beforeSalaryOrAdvance();
     }
+    
 }
